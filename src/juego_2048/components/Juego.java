@@ -46,6 +46,7 @@ public class Juego extends FrameAbstract{
 								,aligment.getPosicionY(200, tablero.getSize(), fila, Aligment.CENTER)
 								,200
 								,200);
+				
 				System.out.println("celda: x =" + celda.getX() + ", y = " + celda.getY() );
 				celdas[column][fila] = celda;
 				
