@@ -20,7 +20,10 @@ public class FCelda extends JLabel{
 	public void setText(String text) {
 		super.setText(text);
 		
-		setBackground(getColor(Integer.valueOf(text)));
+		if(!text.isEmpty()) {
+			setBackground(getColor(Integer.valueOf(text)));
+		}
+		
 	}
 	
 	private Color getColor(Integer numero) {

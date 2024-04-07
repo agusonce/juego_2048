@@ -1,8 +1,8 @@
 package juego_2048.components;
 
 
-import juego_2048.backend.Tablero;
 import juego_2048.components.config.Aligment;
+import juego_2048.model.Tablero;
 
 public class Juego extends FrameAbstract{
 

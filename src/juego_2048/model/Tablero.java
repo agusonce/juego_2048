@@ -1,4 +1,4 @@
-package juego_2048.backend;
+package juego_2048.model;
 
 import java.util.Random;
 
