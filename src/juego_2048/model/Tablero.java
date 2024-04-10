@@ -64,11 +64,14 @@ public class Tablero {
 	 */
 	public void colocarValorEnCeldaVacia() {
 		try {
-			int index = random.nextInt(celdasVacias.size());
-			int[] celda = celdasVacias.get(index);
-			int fila = celda[0];
-			int columna = celda[1];
-			tablero[fila][columna] = this.obtenerValorRelleno();
+			if(!celdasVacias.isEmpty()) {
+				int index = random.nextInt(celdasVacias.size());
+				int[] celda = celdasVacias.get(index);
+				int fila = celda[0];
+				int columna = celda[1];
+				tablero[fila][columna] = this.obtenerValorRelleno();
+			}
+
 		} catch (Exception e) {
 			System.err.println("Error: No se pudo colocar un número en una celda vacía. Detalle: " + e.getMessage());
 		}
@@ -83,19 +86,27 @@ public class Tablero {
 	}
 
 	public void doLeft() {
-
+		this.tablero = ordenarMatrizHaciaIzq(this.tablero); //Estos métodos no tienen que ser estáticos, me quedaron estáticos de cuando hice las pruebas.
+		this.obtenerListadoCeldasVacias();
+		this.colocarValorEnCeldaVacia();
 	}
 
 	public void doRight() {
-
+		this.tablero = ordenarMatrizHaciaDer(this.tablero); //Estos métodos no tienen que ser estáticos, me quedaron estáticos de cuando hice las pruebas.
+		this.obtenerListadoCeldasVacias();
+		this.colocarValorEnCeldaVacia();
 	}
 
 	public void doUp() {
-
+		this.tablero = ordenarMatrizHaciaArriba(this.tablero); //Estos métodos no tienen que ser estáticos, me quedaron estáticos de cuando hice las pruebas.
+		this.obtenerListadoCeldasVacias();
+		this.colocarValorEnCeldaVacia();
 	}
 
 	public void doDown() {
-
+		this.tablero = ordenarMatrizHaciaAbajo(this.tablero); //Estos métodos no tienen que ser estáticos, me quedaron estáticos de cuando hice las pruebas.
+		this.obtenerListadoCeldasVacias();
+		this.colocarValorEnCeldaVacia();
 	}
 
 	public int getDato(int x, int y) {
