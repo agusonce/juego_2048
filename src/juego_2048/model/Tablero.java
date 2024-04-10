@@ -60,7 +60,7 @@ public class Tablero {
 	}
 
 	/**
-	 * Esta funcion asignará en una celda vacía un valor teniendo en cuenta las probabilidades de 2 o 4.
+	 * Esta funcion asignará en una celda vacía un valor teniendo en cuenta las probabilidades de 2 o 4, si es que existe este lugar.
 	 */
 	public void colocarValorEnCeldaVacia() {
 		try {
