@@ -5,18 +5,27 @@ import java.util.List;
 import java.util.Random;
 
 public class Tablero {
-	private final int SIZE = 4;
+
+	public static final int SIZE = 4;
+
 	private double probabilidadValor2 = 0.8;
 	private List<int[]> celdasVacias;
 	private int[][] tablero;
 	private Random random;
 
 	public Tablero() {
-		super(); //No entiendo bien cuál sería la utilidad de esto, si me explican joya.
 		tablero = new int[SIZE][SIZE]; //Creo que cuando llamemos al constructor, ya debemos iniciarlo.
 		random = new Random(); //Lo mismo con el random.
 		celdasVacias = new ArrayList<>();
 		init(); 
+	}
+
+	public Tablero(int[][] tablero) {
+		this.tablero = tablero;
+		random = new Random(); //Lo mismo con el random.
+		celdasVacias = new ArrayList<>();
+		init();
+
 	}
 
 	public void init() {
@@ -55,6 +64,7 @@ public class Tablero {
 	private void colocarValoresIniciales() {
 		this.obtenerListadoCeldasVacias();
 		this.colocarValorEnCeldaVacia();
+
 		this.obtenerListadoCeldasVacias();
 		this.colocarValorEnCeldaVacia();
 	}
@@ -298,6 +308,7 @@ public class Tablero {
 	 * @param matriz: Es la matriz de enteros a realizar la operación.
 	 * @return Devuelve una matriz aplicada la operación descrita.
 	 */
+
     private static int[][] ordenarMatrizHaciaArriba(int[][] matriz) {
     	int dimension = matriz.length;
     	int[][] traspuesta = trasponerMatriz(matriz);
@@ -314,6 +325,7 @@ public class Tablero {
      * @param matriz: es la matriz a clonar.
      * @return Devuelve una nueva matriz con los valores de la matriz por parámetro.
      */
+
     public static int[][] clonarMatriz( int[][] matriz){
         int[][] matrizNueva = new int[matriz.length][matriz.length];
         for(int i = 0; i < matriz.length; i++){

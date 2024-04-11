@@ -4,6 +4,9 @@ package juego_2048.components;
 import juego_2048.components.config.Aligment;
 import juego_2048.model.Tablero;
 
+import java.awt.Event;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 public class Juego extends FrameAbstract{
 
 	private Tablero tablero;
@@ -32,6 +35,43 @@ public class Juego extends FrameAbstract{
 		this.setBounds(0,0,aligment.getScreenWidth(),aligment.getScreenHeight());
 		
 		inicializarCeldas();
+		
+		addKeyListener(new KeyListener() {
+
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+                int keyCode = e.getKeyCode();
+                switch (keyCode) {
+                    case KeyEvent.VK_LEFT:
+                        doLeft();
+                        break;
+                    case KeyEvent.VK_RIGHT:
+                        doRight();
+                        break;
+                    case KeyEvent.VK_UP:
+                        doUp();
+                        break;
+                    case KeyEvent.VK_DOWN:
+                        doDown();
+                        break;
+                }
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+        });
+		
 	}
 	
 	
@@ -56,25 +96,29 @@ public class Juego extends FrameAbstract{
 	}
 
 	public void doLeft() {
-		
+		tablero.doLeft();
+		updateScreen();
 	}
 	
 	public void doRight() {
-		
+		tablero.doRight();
+		updateScreen();
 	}
 	
 	public void doUp() {
-		
+		tablero.doUp();
+		updateScreen();
 	}
 	
 	public void doDown() {
-		
+		tablero.doDown();
+		updateScreen();
 	}
 	
 	private void updateScreen() {
 		
-		for(int column = 0 ; column <= tablero.getSize(); column++) {
-			for(int fila = 0 ; fila <= tablero.getSize(); fila++) {
+		for(int column = 0 ; column <= tablero.getSize() -1; column++) {
+			for(int fila = 0 ; fila <= tablero.getSize() -1; fila++) {
 				FCelda celda = celdas[column][fila];
 				
 				celda.setText(String.valueOf(tablero.getDato(fila, column)));
