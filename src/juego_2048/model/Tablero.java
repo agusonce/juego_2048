@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Random;
 
 public class Tablero {
+
 	public static final int SIZE = 4;
+
 	private double probabilidadValor2 = 0.8;
 	private List<int[]> celdasVacias;
 	private int[][] tablero;
@@ -23,11 +25,12 @@ public class Tablero {
 		random = new Random(); //Lo mismo con el random.
 		celdasVacias = new ArrayList<>();
 		init();
+
 	}
-	
+
 	public void init() {
 		try {
-			this.obtenerListadoCeldasVacias();//se puede sacar la linea
+			this.obtenerListadoCeldasVacias();
 			this.colocarValoresIniciales();
 		} catch (Exception e) {
 			System.err.println("HA OCURRIDO UN ERROR NEFASTO. DETALLE: " + e.getMessage()); //Estaria bueno ver qué hacemos si hay un error en la app. Podríamos redirigir al inicio o algo.
@@ -61,7 +64,8 @@ public class Tablero {
 	private void colocarValoresIniciales() {
 		this.obtenerListadoCeldasVacias();
 		this.colocarValorEnCeldaVacia();
-		this.obtenerListadoCeldasVacias();//se puede eliminar esta linea y que en la anterior saque de la lista la que usa
+
+		this.obtenerListadoCeldasVacias();
 		this.colocarValorEnCeldaVacia();
 	}
 
@@ -304,7 +308,8 @@ public class Tablero {
 	 * @param matriz: Es la matriz de enteros a realizar la operación.
 	 * @return Devuelve una matriz aplicada la operación descrita.
 	 */
-    private static int[][] ordenarMatrizHaciaArriba(int[][] matriz) {//porque se le pasa el tablero?
+
+    private static int[][] ordenarMatrizHaciaArriba(int[][] matriz) {
     	int dimension = matriz.length;
     	int[][] traspuesta = trasponerMatriz(matriz);
         int[][] matrizFinal = new int[dimension][dimension];
@@ -320,7 +325,8 @@ public class Tablero {
      * @param matriz: es la matriz a clonar.
      * @return Devuelve una nueva matriz con los valores de la matriz por parámetro.
      */
-    public static int[][] clonarMatriz( int[][] matriz){//porque static?
+
+    public static int[][] clonarMatriz( int[][] matriz){
         int[][] matrizNueva = new int[matriz.length][matriz.length];
         for(int i = 0; i < matriz.length; i++){
           matrizNueva[i] = matriz[i].clone();
@@ -343,5 +349,4 @@ public class Tablero {
         }
         System.out.println();
     }
-    
 }
