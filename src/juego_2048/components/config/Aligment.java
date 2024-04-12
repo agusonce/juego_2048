@@ -59,6 +59,12 @@ public class Aligment {
 		
 	}
 	
+	public int getCol6H(int hight, int width, int posicion, String aligment) {
+		int columnWidth = Math.round(screenWidth/6);
+		
+		return calcularPosicion(columnWidth, width, posicion, aligment);
+	}
+	
 	public int getScreenHeight() {
 		return screenHeight;
 	}

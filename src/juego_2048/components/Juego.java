@@ -2,9 +2,9 @@ package juego_2048.components;
 
 
 import juego_2048.components.config.Aligment;
+import juego_2048.components.config.Style;
 import juego_2048.model.Tablero;
 
-import java.awt.Event;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 public class Juego extends FrameAbstract{
@@ -31,19 +31,17 @@ public class Juego extends FrameAbstract{
 		tablero = new Tablero();
 		celdas = new FCelda[tablero.getSize()][tablero.getSize()];
 		
-		
-		this.setBounds(0,0,aligment.getScreenWidth(),aligment.getScreenHeight());
-		
+		//configuracion de la ventana
+		setBounds(0,0,aligment.getScreenWidth() + 20 ,aligment.getScreenHeight() + 45);
+		getContentPane().setBackground(Style.COLOR_FONDO_TABLERO);
+		setResizable(false);
 		inicializarCeldas();
+		
 		
 		addKeyListener(new KeyListener() {
 
-
 			@Override
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void keyTyped(KeyEvent e) {}
 
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -66,10 +64,7 @@ public class Juego extends FrameAbstract{
 			}
 
 			@Override
-			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void keyReleased(KeyEvent e) {}
         });
 		
 	}
@@ -125,5 +120,6 @@ public class Juego extends FrameAbstract{
 			}
 		}
 		
+		repaint();
 	}
 }

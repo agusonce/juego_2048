@@ -24,8 +24,6 @@ public class Tablero {
 		this.tablero = tablero;
 		random = new Random(); //Lo mismo con el random.
 		celdasVacias = new ArrayList<>();
-		init();
-
 	}
 
 	public void init() {
