@@ -349,4 +349,12 @@ public class Tablero {
         }
         System.out.println();
     }
+    
+    /**
+     * Utiliza el método clonarMatriz para obtener una copia profunda del tablero actual 
+     * @return este método devuelve una copia del tablero actual
+     */
+    public int[][] getTablero() {
+        return clonarMatriz(tablero);
+    }
 }

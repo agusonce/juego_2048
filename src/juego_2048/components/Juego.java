@@ -2,6 +2,7 @@ package juego_2048.components;
 
 
 import juego_2048.components.config.Aligment;
+import juego_2048.logical.JuegoLogica;
 import juego_2048.model.Tablero;
 
 import java.awt.Event;
@@ -98,21 +99,25 @@ public class Juego extends FrameAbstract{
 	public void doLeft() {
 		tablero.doLeft();
 		updateScreen();
+		checkGameState();
 	}
 	
 	public void doRight() {
 		tablero.doRight();
 		updateScreen();
+		checkGameState();
 	}
 	
 	public void doUp() {
 		tablero.doUp();
 		updateScreen();
+		checkGameState();
 	}
 	
 	public void doDown() {
 		tablero.doDown();
 		updateScreen();
+		checkGameState();
 	}
 	
 	private void updateScreen() {
@@ -125,5 +130,14 @@ public class Juego extends FrameAbstract{
 			}
 		}
 		
+	}
+	
+	private void checkGameState() {
+		if (JuegoLogica.verificarVictoria(tablero)) {
+			System.out.println("Ganaste");
+		}
+		if (JuegoLogica.verificarDerrota(tablero)) {
+			System.out.println("Perdiste");
+		}
 	}
 }
