@@ -7,8 +7,10 @@ import juego_2048.model.Tablero;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
 public class Juego extends FrameAbstract{
 
+	private int PADDING = 5;
 	private Tablero tablero;
 	private FCelda[][] celdas; 
 	
@@ -72,17 +74,18 @@ public class Juego extends FrameAbstract{
 	
 	
 	private void inicializarCeldas() {
+		
+		int clTamanio = calcularDimencioCelda();
 		for(int column = 0 ; column <= tablero.getSize() -1; column++) {
 			for(int fila = 0 ; fila <= tablero.getSize() - 1; fila++) {
 				FCelda celda = new FCelda();
 				celda.setText(String.valueOf(tablero.getDato(fila, column)));
 				
-				celda.setBounds(aligment.getPosicionX(200, tablero.getSize(), column, Aligment.CENTER)
-								,aligment.getPosicionY(200, tablero.getSize(), fila, Aligment.CENTER)
-								,200
-								,200);
+				celda.setBounds(PADDING + aligment.getPosicionX(clTamanio, tablero.getSize(), column, Aligment.CENTER)
+								, PADDING + aligment.getPosicionY(clTamanio, tablero.getSize(), fila, Aligment.CENTER)
+								,clTamanio
+								,clTamanio);
 				
-				System.out.println("celda: x =" + celda.getX() + ", y = " + celda.getY() );
 				celdas[column][fila] = celda;
 				
 				getContentPane().add(celda);
@@ -121,5 +124,9 @@ public class Juego extends FrameAbstract{
 		}
 		
 		repaint();
+	}
+	
+	private int calcularDimencioCelda() {
+		return (aligment.getScreenWidth() - tablero.getSize() * PADDING) / tablero.getSize();
 	}
 }

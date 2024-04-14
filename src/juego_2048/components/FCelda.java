@@ -5,6 +5,7 @@ import javax.swing.SwingConstants;
 
 import juego_2048.components.config.Style;
 import java.awt.Color;
+import java.awt.Font;
 
 
 public class FCelda extends JLabel{
@@ -16,6 +17,15 @@ public class FCelda extends JLabel{
 	protected void inicialize() {
 		setHorizontalAlignment(SwingConstants.CENTER);
 		setOpaque(true);
+	}
+	
+	@Override
+	public void setBounds(int x, int y, int width, int height) {
+		super.setBounds(x, y, width, height);
+		
+		if(width>100) {
+			setFont(Style.createFont(25));
+		}
 	}
 	
 	@Override

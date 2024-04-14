@@ -1,10 +1,11 @@
 package juego_2048.components.config;
 
 import java.awt.Color;
+import java.awt.Font;
 
 public class Style {
 
-	public static final Color AZUL_CLARO = new Color(22,112,12); 
+	public static final Color COLOR_MARRON = new Color(143, 122, 102); 
 
 	public static final Color COLOR_VACIO= new Color(238, 228, 218, 30);
 
@@ -29,4 +30,10 @@ public class Style {
 	public static final Color COLOR_1024= new Color(238, 228, 218); //nose
 	
 	public static final Color COLOR_FONDO_TABLERO= new Color(119, 110, 101);
+	
+	
+	public static Font createFont(int size) {
+		return new Font("Arial", Font.PLAIN, size);
+	}
+	
 }
