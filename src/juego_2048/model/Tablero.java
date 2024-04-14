@@ -1,6 +1,7 @@
 package juego_2048.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -100,27 +101,23 @@ public class Tablero {
 	}
 
 	public void doLeft() {
-		this.tablero = ordenarMatrizHaciaIzq(this.tablero);
-		this.obtenerListadoCeldasVacias();
-		this.colocarValorEnCeldaVacia();
+		int[][] tableroTemp = ordenarMatrizHaciaIzq(this.tablero);
+		agregarRandom(tableroTemp, this.tablero);
 	}
 
 	public void doRight() {
-		this.tablero = ordenarMatrizHaciaDer(this.tablero);
-		this.obtenerListadoCeldasVacias();
-		this.colocarValorEnCeldaVacia();
+		int[][] tableroTemp = ordenarMatrizHaciaDer(this.tablero);
+		agregarRandom(tableroTemp, this.tablero);
 	}
 
 	public void doUp() {
-		this.tablero = ordenarMatrizHaciaArriba(this.tablero);
-		this.obtenerListadoCeldasVacias();
-		this.colocarValorEnCeldaVacia();
+		int[][] tableroTemp = ordenarMatrizHaciaArriba(this.tablero);
+		agregarRandom(tableroTemp, this.tablero);
 	}
 
 	public void doDown() {
-		this.tablero = ordenarMatrizHaciaAbajo(this.tablero);
-		this.obtenerListadoCeldasVacias();
-		this.colocarValorEnCeldaVacia();
+		int[][] tableroTemp = ordenarMatrizHaciaAbajo(this.tablero);
+		agregarRandom(tableroTemp, this.tablero);
 	}
 
 	public int getDato(int x, int y) {
@@ -137,6 +134,14 @@ public class Tablero {
 
 	private int getPosicionRandom() {
 		return random.nextInt(SIZE - 1);
+	}
+
+	private void agregarRandom(int[][] tableroTemp, int[][] previo) {
+		if (!Arrays.deepEquals(tableroTemp, previo)) {
+			this.tablero = tableroTemp;
+			this.obtenerListadoCeldasVacias();
+			this.colocarValorEnCeldaVacia();
+		}
 	}
 
 	/**
@@ -160,10 +165,10 @@ public class Tablero {
 	/**
 	 * Realiza un recorrido por el array haciendo el ordenado y suma dejando los
 	 * ceros al inicio. Las sumas las realiza de a dos números cuando estos son
-	 * iguales. Una vez que efectúa la suma, el valor del array donde está el
-	 * primer sumando es reemplazado por el valor a la izquierda de esta posición. En
-	 * caso de no existir dicho valor, coloca un 0. A su vez, deja todos los ceros
-	 * en el inicio del array, si existen.
+	 * iguales. Una vez que efectúa la suma, el valor del array donde está el primer
+	 * sumando es reemplazado por el valor a la izquierda de esta posición. En caso
+	 * de no existir dicho valor, coloca un 0. A su vez, deja todos los ceros en el
+	 * inicio del array, si existen.
 	 * 
 	 * @param valores: Array de enteros con los cuales se desea operar.
 	 * @return Un array de enterios ordenado de misma dimensión que la entrada con
@@ -390,12 +395,14 @@ public class Tablero {
 		}
 		System.out.println();
 	}
-    
-    /**
-     * Utiliza el método clonarMatriz para obtener una copia profunda del tablero actual 
-     * @return este método devuelve una copia del tablero actual
-     */
-    public int[][] getTablero() {
-        return clonarMatriz(tablero);
-    }
+
+	/**
+	 * Utiliza el método clonarMatriz para obtener una copia profunda del tablero
+	 * actual
+	 * 
+	 * @return este método devuelve una copia del tablero actual
+	 */
+	public int[][] getTablero() {
+		return clonarMatriz(tablero);
+	}
 }

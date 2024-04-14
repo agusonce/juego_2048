@@ -32,14 +32,7 @@ public class Juego extends FrameAbstract{
 	@Override
 	protected void initialize() {
 		super.initialize();
-		int[][] tableroTest = {
-	            {512, 512, 512, 512},
-	            {4, 2, 4, 2},
-	            {2, 4, 256, 1024},
-	            {4, 2, 4, 2}
-	        };
-		tablero = new Tablero(tableroTest);
-		
+		tablero = new Tablero();
 		celdas = new FCelda[tablero.getSize()][tablero.getSize()];
 		
 		//configuracion de la ventana
