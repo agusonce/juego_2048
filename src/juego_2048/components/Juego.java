@@ -129,14 +129,13 @@ public class Juego extends FrameAbstract{
 				celda.setText(String.valueOf(tablero.getDato(fila, column)));
 			}
 		}
-		
 	}
 	
 	private void checkGameState() {
 		if (JuegoLogica.verificarVictoria(tablero)) {
 			System.out.println("Ganaste");
 		}
-		if (JuegoLogica.verificarDerrota(tablero)) {
+		else if (JuegoLogica.verificarDerrota(tablero)) {
 			System.out.println("Perdiste");
 		}
 	}
