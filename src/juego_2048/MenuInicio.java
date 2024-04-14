@@ -71,6 +71,6 @@ public class MenuInicio extends FrameAbstract{
 	
 	public void showJuego() {
 		int windowHeight = getContentPane().getHeight();
-		Router.finishWindows(this, new Juego(new Aligment(windowHeight, windowHeight)));
+		Router.finishWindows(this, new Juego(new Aligment(windowHeight, windowHeight)),false);
 	}
 }

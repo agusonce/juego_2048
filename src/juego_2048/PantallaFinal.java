@@ -66,6 +66,6 @@ public class PantallaFinal extends JFrame {
 	}
 
 	public void irAInicio() {
-		Router.finishWindows(this, new MenuInicio());
+		Router.finishWindows(this, new MenuInicio(),false);
 	}
 }

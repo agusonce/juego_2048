@@ -32,8 +32,14 @@ public class Juego extends FrameAbstract{
 	@Override
 	protected void initialize() {
 		super.initialize();
+		int[][] tableroTest = {
+	            {512, 512, 512, 512},
+	            {4, 2, 4, 2},
+	            {2, 4, 256, 1024},
+	            {4, 2, 4, 2}
+	        };
+		tablero = new Tablero(tableroTest);
 		
-		tablero = new Tablero();
 		celdas = new FCelda[tablero.getSize()][tablero.getSize()];
 		
 		//configuracion de la ventana
@@ -138,11 +144,10 @@ public class Juego extends FrameAbstract{
 	
 	private void checkGameState() {
 		if (JuegoLogica.verificarVictoria(tablero)) {
-			Router.finishWindows(this, new PantallaFinal(true));
+			Router.finishWindows(this, new PantallaFinal(true),true);
 		}
 		else if (JuegoLogica.verificarDerrota(tablero)) {
-			Router.finishWindows(this, new PantallaFinal(false));
+			Router.finishWindows(this, new PantallaFinal(false),true);
 		}
-
 	}
 }
