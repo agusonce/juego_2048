@@ -258,7 +258,7 @@ public class Tablero {
 	private static int[] realizarSumasDesdeFinal(int[] valores) {
 		int[] arrayConSumas = valores.clone();
 		int i = valores.length - 1;
-		while (i - 1 > 0) {
+		while (i > 0) {
 			if (arrayConSumas[i] == arrayConSumas[i - 1]) {
 				arrayConSumas[i] = arrayConSumas[i] * 2;
 				int j = i - 1;
