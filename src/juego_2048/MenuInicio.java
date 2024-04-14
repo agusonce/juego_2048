@@ -13,6 +13,7 @@ import juego_2048.components.FLabel;
 import juego_2048.components.FrameAbstract;
 import juego_2048.components.Juego;
 import juego_2048.components.config.Aligment;
+import juego_2048.components.config.Style;
 
 
 public class MenuInicio extends FrameAbstract{
