@@ -1,7 +1,7 @@
 package juego_2048.logical;
 
 import juego_2048.model.Tablero;
-
+import java.util.Arrays;
 public class JuegoLogica {
 	
 	public static boolean verificarVictoria(Tablero tablero) {
@@ -26,25 +26,25 @@ public class JuegoLogica {
     public static boolean puedeMoverIzquierda(Tablero tablero) {
         Tablero tableroIzquierda = new Tablero(tablero.getTablero());
         tableroIzquierda.doLeft();
-        return tableroIzquierda.equals(tablero);
+        return !Arrays.deepEquals(tableroIzquierda.getTablero(),tablero.getTablero());
     }
 
     public static boolean puedeMoverDerecha(Tablero tablero) {
         Tablero tableroDerecha = new Tablero(tablero.getTablero());
         tableroDerecha.doRight();
-        return tableroDerecha.equals(tablero);
+        return !Arrays.deepEquals(tableroDerecha.getTablero(),tablero.getTablero());
     }
 
     public static boolean puedeMoverArriba(Tablero tablero) {
         Tablero tableroArriba = new Tablero(tablero.getTablero());
         tableroArriba.doUp();
-        return tableroArriba.equals(tablero);
+        return !Arrays.deepEquals(tableroArriba.getTablero(),tablero.getTablero());
     }
 
     public static boolean puedeMoverAbajo(Tablero tablero) {
         Tablero tableroAbajo = new Tablero(tablero.getTablero());
         tableroAbajo.doDown();
-        return tableroAbajo.equals(tablero);
+        return !Arrays.deepEquals(tableroAbajo.getTablero(),tablero.getTablero());
     }
 
 }
