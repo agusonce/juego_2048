@@ -1,6 +1,9 @@
 package juego_2048.components;
 
 
+import juego_2048.MenuInicio;
+import juego_2048.PantallaFinal;
+import juego_2048.Router;
 import juego_2048.components.config.Aligment;
 import juego_2048.components.config.Style;
 import juego_2048.logical.JuegoLogica;
@@ -135,10 +138,10 @@ public class Juego extends FrameAbstract{
 	
 	private void checkGameState() {
 		if (JuegoLogica.verificarVictoria(tablero)) {
-			System.out.println("Ganaste");
+			Router.finishWindows(this, new PantallaFinal(true));
 		}
 		else if (JuegoLogica.verificarDerrota(tablero)) {
-			System.out.println("Perdiste");
+			Router.finishWindows(this, new PantallaFinal(false));
 		}
 
 	}
