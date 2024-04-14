@@ -4,6 +4,8 @@ import java.awt.Dimension;
 
 public class Aligment {
 	
+	private static int CORRECCION_BANNER = 30;
+	
 	public static final String CENTER = "CENTER";
 	public static final String LEFT = "LEFT";
 	public static final String RIGHT = "RIGHT";
@@ -13,8 +15,8 @@ public class Aligment {
 	
 	public Aligment() {
 		Dimension screen = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-		this.screenWidth = screen.width;
-		this.screenHeight = screen.height;
+		this.screenHeight = screen.height - CORRECCION_BANNER;
+		this.screenWidth = screen.height - CORRECCION_BANNER;
 	}
 	
 	public Aligment(int width, int height) {
@@ -32,7 +34,7 @@ public class Aligment {
 	
 	public int getPosicionY(int hight, int col, int posicion, String aligment) {
 		
-		int columnWidth = Math.round(screenWidth/col);
+		int columnWidth = Math.round(screenHeight/col);
 		
 		return calcularPosicion(columnWidth, hight, posicion, aligment);
 	}
@@ -60,7 +62,7 @@ public class Aligment {
 	}
 	
 	public int getScreenHeight() {
-		return screenHeight;
+		return screenHeight - CORRECCION_BANNER;
 	}
 	
 	public void setScreenHeight(int screenHeight) {
