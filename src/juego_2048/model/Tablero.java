@@ -380,6 +380,7 @@ public class Tablero {
 	 * 
 	 * @param matriz: Es la matriz de enteros a realizar la operación.
 	 */
+
 	private static void imprimirMatriz(int[][] matriz) {
 		for (int i = 0; i < matriz.length; i++) {
 			for (int j = 0; j < matriz[i].length; j++) {
@@ -389,4 +390,12 @@ public class Tablero {
 		}
 		System.out.println();
 	}
+    
+    /**
+     * Utiliza el método clonarMatriz para obtener una copia profunda del tablero actual 
+     * @return este método devuelve una copia del tablero actual
+     */
+    public int[][] getTablero() {
+        return clonarMatriz(tablero);
+    }
 }
