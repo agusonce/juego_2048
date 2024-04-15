@@ -13,11 +13,13 @@ public class Tablero {
 	private List<int[]> celdasVacias;
 	private int[][] tablero;
 	private Random random;
+	private static int puntaje;
 
 	public Tablero() {
 		tablero = new int[SIZE][SIZE]; // Creo que cuando llamemos al constructor, ya debemos iniciarlo.
 		random = new Random(); // Lo mismo con el random.
 		celdasVacias = new ArrayList<>();
+		puntaje = 0;
 		init();
 	}
 
@@ -231,6 +233,7 @@ public class Tablero {
 		while (i + 1 < valores.length) {
 			if (arrayConSumas[i] == arrayConSumas[i + 1]) {
 				arrayConSumas[i] = arrayConSumas[i] * 2;
+				actualizarPuntaje(arrayConSumas[i]);
 				int j = i + 1;
 				while (j + 1 < arrayConSumas.length) {
 					int valorSiguiente = arrayConSumas[j + 1];
@@ -261,6 +264,7 @@ public class Tablero {
 		while (i > 0) {
 			if (arrayConSumas[i] == arrayConSumas[i - 1]) {
 				arrayConSumas[i] = arrayConSumas[i] * 2;
+				actualizarPuntaje(arrayConSumas[i]);
 				int j = i - 1;
 				while (j > 0) {
 					int valorAnterior = arrayConSumas[j - 1];
@@ -404,5 +408,20 @@ public class Tablero {
 	 */
 	public int[][] getTablero() {
 		return clonarMatriz(tablero);
+	}
+	
+	/**
+	 * Obtener puntaje
+	 */
+		public int getPuntaje() {
+	        return puntaje;
+	    }
+		
+	/**
+	 * Método para actualizar el puntaje
+	 * @param valor el cual modificara el puntaje
+	 */
+	public static void actualizarPuntaje(int valor) {
+	       puntaje += valor;
 	}
 }
