@@ -17,10 +17,13 @@ public class JuegoLogica {
     }
 	
 	public static boolean verificarDerrota(Tablero tablero) {
-        return !puedeMoverIzquierda(tablero) &&
-               !puedeMoverDerecha(tablero) &&
-               !puedeMoverArriba(tablero) &&
-               !puedeMoverAbajo(tablero);
+		int tempPuntaje = tablero.getPuntaje();
+		boolean esValido = !puedeMoverIzquierda(tablero) &&
+	               !puedeMoverDerecha(tablero) &&
+	               !puedeMoverArriba(tablero) &&
+	               !puedeMoverAbajo(tablero);
+		tablero.setPuntaje(tempPuntaje);
+        return esValido;
 	}
 
     public static boolean puedeMoverIzquierda(Tablero tablero) {
