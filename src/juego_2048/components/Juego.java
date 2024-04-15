@@ -8,14 +8,18 @@ import juego_2048.components.config.Aligment;
 import juego_2048.components.config.Style;
 import juego_2048.logical.JuegoLogica;
 import juego_2048.model.Tablero;
+
+import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import juego_2048.logger.Ranking;
 
 public class Juego extends FrameAbstract{
 
 	private int PADDING = 5;
 	private Tablero tablero;
 	private FCelda[][] celdas; 
+	private BarraPuntuacion barraPuntuacion;
 	
 	public Juego() {
 		super();
@@ -40,6 +44,8 @@ public class Juego extends FrameAbstract{
 		getContentPane().setBackground(Style.COLOR_FONDO_TABLERO);
 		setResizable(false);
 		inicializarCeldas();
+		barraPuntuacion = new BarraPuntuacion();
+	    getContentPane().add(barraPuntuacion, BorderLayout.NORTH);
 		
 		
 		addKeyListener(new KeyListener() {
@@ -99,24 +105,28 @@ public class Juego extends FrameAbstract{
 		tablero.doLeft();
 		updateScreen();
 		checkGameState();
+		System.out.println(tablero.getPuntaje());
 	}
 	
 	public void doRight() {
 		tablero.doRight();
 		updateScreen();
 		checkGameState();
+		System.out.println(tablero.getPuntaje());
 	}
 	
 	public void doUp() {
 		tablero.doUp();
 		updateScreen();
 		checkGameState();
+		System.out.println(tablero.getPuntaje());
 	}
 	
 	public void doDown() {
 		tablero.doDown();
 		updateScreen();
 		checkGameState();
+		System.out.println(tablero.getPuntaje());
 	}
 	
 	private void updateScreen() {
@@ -140,6 +150,8 @@ public class Juego extends FrameAbstract{
 			Router.finishWindows(this, new PantallaFinal(true),true);
 		}
 		else if (JuegoLogica.verificarDerrota(tablero)) {
+			String puntajeString = String.valueOf(tablero.getPuntaje());
+			Ranking.writeToFile("Logs", puntajeString );
 			Router.finishWindows(this, new PantallaFinal(false),true);
 		}
 	}
