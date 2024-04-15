@@ -11,6 +11,9 @@ import juego_2048.model.Tablero;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -155,13 +158,32 @@ public class Juego extends FrameAbstract{
 	private void checkGameState() {
 		if (JuegoLogica.verificarVictoria(tablero)) {
 			setEnabled(false);
+			escribirLog();
 			Router.finishWindows(this, new PantallaFinal(true),true);
 		}
 		else if (JuegoLogica.verificarDerrota(tablero)) {
 			setEnabled(false);
-			String puntajeString = String.valueOf(tablero.getPuntaje());
-			Ranking.writeToFile("Logs", puntajeString );
+			escribirLog();
 			Router.finishWindows(this, new PantallaFinal(false),true);
 		}
+	}
+	
+	private void escribirLog() {
+	    try {
+	        ArrayList<Integer> scores = Ranking.readScoresFromFile("Logs");
+	        scores.add(tablero.getPuntaje());
+	        Collections.sort(scores, Collections.reverseOrder());
+	        if (scores.size() > 5) {
+	            scores = new ArrayList<>(scores.subList(0, 5));
+	        }
+	        StringBuilder sb = new StringBuilder();
+	        for (Integer score : scores) {
+	            sb.append(score).append("\n");
+	        }
+	        Ranking.writeToFile("Logs", sb.toString());
+	        System.out.println("Top 5 puntuaciones actualizado exitosamente.");
+	    } catch (IOException e) {
+	        System.err.println("Error al escribir en el archivo: " + e.getMessage());
+	    }
 	}
 }
