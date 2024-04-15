@@ -424,4 +424,8 @@ public class Tablero {
 	public static void actualizarPuntaje(int valor) {
 	       puntaje += valor;
 	}
+
+	public void setPuntaje(int tempPuntaje) {
+		puntaje = tempPuntaje;	
+	}
 }

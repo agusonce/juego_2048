@@ -9,17 +9,20 @@ import juego_2048.components.config.Style;
 import juego_2048.logical.JuegoLogica;
 import juego_2048.model.Tablero;
 
-import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
 import juego_2048.logger.Ranking;
 
 public class Juego extends FrameAbstract{
 
 	private int PADDING = 5;
 	private Tablero tablero;
-	private FCelda[][] celdas; 
-	private BarraPuntuacion barraPuntuacion;
+	private FCelda[][] celdas;
+	private JLabel puntaje;
 	
 	public Juego() {
 		super();
@@ -44,10 +47,13 @@ public class Juego extends FrameAbstract{
 		getContentPane().setBackground(Style.COLOR_FONDO_TABLERO);
 		setResizable(false);
 		inicializarCeldas();
-		barraPuntuacion = new BarraPuntuacion();
-	    getContentPane().add(barraPuntuacion, BorderLayout.NORTH);
-		
-		
+		puntaje = new JLabel();
+		puntaje.setText("Puntaje: " + tablero.getPuntaje());
+		puntaje.setBounds(0, 0, aligment.getScreenWidth()-20, 105);
+		puntaje.setHorizontalAlignment(SwingConstants.RIGHT);
+		puntaje.setFont(Style.createFont(35));
+		getContentPane().add(puntaje);
+		getContentPane().setComponentZOrder(puntaje, 0);
 		addKeyListener(new KeyListener() {
 
 			@Override
@@ -138,6 +144,7 @@ public class Juego extends FrameAbstract{
 				celda.setText(String.valueOf(tablero.getDato(fila, column)));
 			}
 		}
+		puntaje.setText("Puntaje: " + tablero.getPuntaje());
 		repaint();
 	}
 	
