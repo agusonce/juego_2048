@@ -147,9 +147,11 @@ public class Juego extends FrameAbstract{
 	
 	private void checkGameState() {
 		if (JuegoLogica.verificarVictoria(tablero)) {
+			setEnabled(false);
 			Router.finishWindows(this, new PantallaFinal(true),true);
 		}
 		else if (JuegoLogica.verificarDerrota(tablero)) {
+			setEnabled(false);
 			String puntajeString = String.valueOf(tablero.getPuntaje());
 			Ranking.writeToFile("Logs", puntajeString );
 			Router.finishWindows(this, new PantallaFinal(false),true);
