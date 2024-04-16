@@ -2,10 +2,8 @@ package juego_2048;
 
 import java.awt.EventQueue;
 
-
 public class Juego2048 {
 
-	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -17,9 +15,9 @@ public class Juego2048 {
 			}
 		});
 	}
-	
-	public Juego2048 (){
-		Router router= Router.getInstancia();
+
+	public Juego2048() {
+		Router router = Router.getInstancia();
 		router.start();
 	}
 }

@@ -8,7 +8,6 @@ import java.util.Random;
 public class Tablero {
 
 	public static final int SIZE = 4;
-
 	private double probabilidadValor2 = 0.8;
 	private List<int[]> celdasVacias;
 	private int[][] tablero;
@@ -16,8 +15,8 @@ public class Tablero {
 	private static int puntaje;
 
 	public Tablero() {
-		tablero = new int[SIZE][SIZE]; // Creo que cuando llamemos al constructor, ya debemos iniciarlo.
-		random = new Random(); // Lo mismo con el random.
+		tablero = new int[SIZE][SIZE];
+		random = new Random();
 		celdasVacias = new ArrayList<>();
 		puntaje = 0;
 		init();
@@ -25,7 +24,7 @@ public class Tablero {
 
 	public Tablero(int[][] tablero) {
 		this.tablero = tablero;
-		random = new Random(); // Lo mismo con el random.
+		random = new Random();
 		celdasVacias = new ArrayList<>();
 	}
 
@@ -34,11 +33,7 @@ public class Tablero {
 			this.obtenerListadoCeldasVacias();
 			this.colocarValoresIniciales();
 		} catch (Exception e) {
-			System.err.println("HA OCURRIDO UN ERROR NEFASTO. DETALLE: " + e.getMessage()); // Estaria bueno ver qué
-																							// hacemos si hay un error
-																							// en la app. Podríamos
-																							// redirigir al inicio o
-																							// algo.
+			System.err.println("Ha ocurrido un error en la app. Descripción: " + e.getMessage());
 		}
 	}
 
@@ -69,7 +64,6 @@ public class Tablero {
 	private void colocarValoresIniciales() {
 		this.obtenerListadoCeldasVacias();
 		this.colocarValorEnCeldaVacia();
-
 		this.obtenerListadoCeldasVacias();
 		this.colocarValorEnCeldaVacia();
 	}
@@ -409,23 +403,24 @@ public class Tablero {
 	public int[][] getTablero() {
 		return clonarMatriz(tablero);
 	}
-	
+
 	/**
 	 * Obtener puntaje
 	 */
-		public int getPuntaje() {
-	        return puntaje;
-	    }
-		
+	public int getPuntaje() {
+		return puntaje;
+	}
+
 	/**
 	 * Método para actualizar el puntaje
+	 * 
 	 * @param valor el cual modificara el puntaje
 	 */
 	public static void actualizarPuntaje(int valor) {
-	       puntaje += valor;
+		puntaje += valor;
 	}
 
 	public void setPuntaje(int tempPuntaje) {
-		puntaje = tempPuntaje;	
+		puntaje = tempPuntaje;
 	}
 }
